@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/posutochno.iml" filepath="$PROJECT_DIR$/.idea/modules/posutochno.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/posutochno_main.iml" filepath="$PROJECT_DIR$/.idea/modules/posutochno_main.iml" group="posutochno" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/posutochno_test.iml" filepath="$PROJECT_DIR$/.idea/modules/posutochno_test.iml" group="posutochno" />
+    </modules>
+  </component>
+</project>
