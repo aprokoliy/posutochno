@@ -35,5 +35,15 @@ public class MainPageTests extends TestBase {
         Assert.assertTrue(app.isElementClickable("//a[@href='/signup']"));
     }
 
+    //test for checking whether action passes to Register form
+    @Test
+    public void goToRegisterForm(){
+        app.isElementPresent("//a[@href='/signup']");
+        app.isElementClickable("//a[@href='/signup']");
+        //Assert.assertTrue(app.isElementClickable("//a[@href='/signup']"));
     }
+
+}
+
+
 
