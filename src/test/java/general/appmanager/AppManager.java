@@ -11,7 +11,6 @@ package general.appmanager;
         import org.openqa.selenium.support.ui.WebDriverWait;
 
         import java.util.NoSuchElementException;
-        import java.util.concurrent.TimeUnit;
 
         import static org.openqa.selenium.remote.BrowserType.CHROME;
         import static org.openqa.selenium.remote.BrowserType.FIREFOX;
@@ -22,15 +21,16 @@ package general.appmanager;
  */
 public class AppManager {
 
-    private WebDriver wd;
+    private  LoginHelper loginHelper;
     private String browser;
-    WebDriverWait wait;
     private final User user = new User();
+    protected WebDriver wd;
+    WebDriverWait wait;
 
 
     public AppManager(String browser) {
         this.browser = browser;
-        //User user = new User();
+
 
     }
 
@@ -52,6 +52,7 @@ public class AppManager {
         }
         // wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
         wd.get("https://www.posutochno.com/");
+        loginHelper = new LoginHelper(wd);
         wait = new WebDriverWait(wd, 5);
     }
 
@@ -61,32 +62,6 @@ public class AppManager {
 
     public void waitElement(String locator){
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(locator)));
-    }
-
-    public void goToLoginPage(){
-        waitElement("//a[@data-ui-sref='login']");
-        wd.findElement(By.xpath("//a[@data-ui-sref='login']")).click();
-    }
-
-    public void fillLoginForm(User user){
-        wd.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-        wd.findElement(By.name("email")).clear();
-        wd.findElement(By.name("email")).sendKeys(user.getEmail());
-        wd.findElement(By.name("password")).clear();
-        wd.findElement(By.name("password")).sendKeys(user.getPassword());
-    }
-
-    public void approveLogIn(){
-        wd.findElement(By.xpath("//button[@type='submit']")).click();
-    }
-
-    public void successfulLogIn(){
-        wd.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
-        wd.findElement(By.xpath("//a[@data-ui-sref='create-venue']"));
-    }
-
-    public void invalidLoginOrPassword(){
-        wd.findElement(By.xpath("//*[@id='messages']"));
     }
 
     public String getErrorMessage(){
@@ -136,6 +111,10 @@ public class AppManager {
 
     public boolean findElement(String locator){
         return true;
+    }
+
+    public LoginHelper getLoginHelper() {
+        return loginHelper;
     }
 }
 
